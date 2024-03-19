@@ -1,5 +1,5 @@
 type Image = {
-  id?:string
-  width?:number
-  height?:number
+  id:string | ""
+  width:number | 0
+  height:number | 0
 }

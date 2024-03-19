@@ -6,12 +6,15 @@ type Props = {
 }
 
 export default function GalleryColumn({images}: Props) {
-  function renderImages():ReactNode[]{
+
+
+
+  function renderImages(images:Image[]):ReactNode[]{
     const content:ReactNode[] = []
-    images.forEach((image)=>{
+    images.forEach((image,index)=>{
       content.push(
         <GalleryImage 
-        key={image.id} 
+        key={index} 
         width={image.width} 
         height={image.height} 
         id={image.id}/>
@@ -21,8 +24,8 @@ export default function GalleryColumn({images}: Props) {
     return content
   }
   return (
-    <>
-    {renderImages()}
-    </>
+    <div className="flex flex-col grow">
+      {renderImages(images)}
+    </div>
   )
 }
