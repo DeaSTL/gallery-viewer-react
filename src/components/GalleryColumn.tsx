@@ -15,9 +15,7 @@ export default function GalleryColumn({images}: Props) {
       content.push(
         <GalleryImage 
         key={index} 
-        width={image.width} 
-        height={image.height} 
-        id={image.id}/>
+        image={image}/>
       )
 
     })

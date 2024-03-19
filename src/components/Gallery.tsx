@@ -26,7 +26,6 @@ export function Gallery({}: Props) {
     const arranged_images:Image[][] = []
     for (let i = 0; i < imageCols; i++) {
       arranged_images[i] = []
-
       for (let j = 0; j < Math.floor (images.length / imageCols); j++) {
         if(images[i + j * imageCols]){
           arranged_images[i][j] = images[i + j * imageCols]
@@ -42,11 +41,18 @@ export function Gallery({}: Props) {
       resp.json().then((data:Image[])=>{
         const raw_images:Image[] = data as Image[]
 
-        raw_images.forEach((image)=>{
-          image.width /= 10
-          image.height /= 10
-          image.width = Math.ceil(image.width)
-          image.height = Math.ceil(image.height)
+        raw_images.forEach((image,index)=>{
+          raw_images[index].width /= 10
+          raw_images[index].height /= 10
+          raw_images[index].width = Math.ceil(image.width)
+          raw_images[index].height = Math.ceil(image.height)
+
+          if(raw_images[index - 1]){
+            raw_images[index].next = raw_images[index - 1]
+          }
+          if(raw_images[index + 1]){
+            raw_images[index].prev = raw_images[index + 1]
+          }
         })
         setImages(raw_images)
       })

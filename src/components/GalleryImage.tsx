@@ -3,12 +3,10 @@ import { $current_image, setCurrentImage, setShowImageModal } from "../store/Ima
 import { useStore } from "@nanostores/react"
 
 type Props = {
-  width:number | 200
-  height:number | 200
-  id:string | ""
+  image:Image
 }
 
-export default function GalleryImage({width,height,id}: Props) {
+export default function GalleryImage({image}: Props) {
   
   const [loading, setLoading] = useState(true)
   const current_image = useStore($current_image)
@@ -21,7 +19,7 @@ export default function GalleryImage({width,height,id}: Props) {
 
   const handleClick = () => {
     setShowImageModal(true)  
-    setCurrentImage({id,width,height})
+    setCurrentImage(image)
   }
 
 
@@ -29,13 +27,13 @@ export default function GalleryImage({width,height,id}: Props) {
     <div className="p-1 max-w-80 max-w-full  overflow-x-hidden" onClick={handleClick}>
       <img 
         className={`${loading ? 'size-0' : 'visible size-full'}`} 
-        src={`https://picsum.photos/id/${id}/${width}/${height}`} 
+        src={`https://picsum.photos/id/${image.id}/${image.width}/${image.height}`} 
         onLoad={handleLoad}
       ></img>
       {loading ? 
       <div 
         className={`loading-image`}
-        style={{width:`${width}px`,height:`${height}px`}}
+        style={{width:`${image.width}px`,height:`${image.height}px`}}
       ></div> :
       ``
       }
