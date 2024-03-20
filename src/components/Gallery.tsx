@@ -37,7 +37,7 @@ export function Gallery({}: Props) {
   },[images,imageCols])
 
   useEffect(() => {
-    fetch("https://picsum.photos/v2/list?page=2&limit=50").then((resp)=>{
+    fetch("https://picsum.photos/v2/list?page=2&limit=100").then((resp)=>{
       resp.json().then((data:Image[])=>{
         const raw_images:Image[] = data as Image[]
 
@@ -48,10 +48,10 @@ export function Gallery({}: Props) {
           raw_images[index].height = Math.ceil(image.height)
 
           if(raw_images[index - 1]){
-            raw_images[index].next = raw_images[index - 1]
+            raw_images[index].prev = raw_images[index - 1]
           }
           if(raw_images[index + 1]){
-            raw_images[index].prev = raw_images[index + 1]
+            raw_images[index].next = raw_images[index + 1]
           }
         })
         setImages(raw_images)
