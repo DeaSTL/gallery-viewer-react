@@ -5,7 +5,6 @@ import { useStore } from "@nanostores/react"
 import { useEffect} from "react"
 
 type Props = {
-  current:Image
 }
 
 const arrowStyle:string = "h-3/4 w-10 flex flex-col justify-center absolute opacity-50 text-white hover:opacity-100 mt-12"

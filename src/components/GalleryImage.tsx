@@ -9,7 +9,7 @@ type Props = {
 export default function GalleryImage({image}: Props) {
   
   const [loading, setLoading] = useState(true)
-  const current_image = useStore($current_image)
+  useStore($current_image)
 
   function handleLoad(event:any) {
     if(event.type == "load") {

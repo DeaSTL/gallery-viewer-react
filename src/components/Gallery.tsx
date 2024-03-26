@@ -4,7 +4,7 @@ import GalleryColumn from "./GalleryColumn"
 type Props = {}
 
 export function Gallery({}: Props) {
-  const [imageCols, setImageCols] = useState(5)
+  const [imageCols] = useState(5)
 
   const [arrangedImages, setArrangedImages] = useState<Image[][]>([])
   const [images, setImages] = useState<Image[]>([])
